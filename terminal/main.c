@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <unistd.h>
 
+#include "renderer.h"
+#include "terminal.h"
+
 int main(int argc, char** args){
 	SDL_Surface* winSurface = NULL;
 	SDL_Window* window = NULL;
@@ -18,27 +21,12 @@ int main(int argc, char** args){
 		return 1;	
 	}
 
-	winSurface = SDL_GetWindowSurface(window);
+	renderer_init(window);
+	SDL_Color DEFAULT_BACKGROUND = {0, 0, 0, 255}; 
+	render_background(DEFAULT_BACKGROUND);
+	terminal_loop();
 
-	if (!winSurface){
-		printf("failed to view windowSurf");
-		return 1;
-	}
-	
-	SDL_FillRect(winSurface, NULL, SDL_MapRGB (winSurface-> format, 0, 0, 0));
-	SDL_UpdateWindowSurface(window);
-
-	SDL_Event event;
-	int running = 1;
-
-	while (running){
-		while (SDL_PollEvent(&event)){
-			if (event.type == SDL_QUIT){
-				running = 0;
-			}
-		}
-		SDL_Delay(10);
-	}
+	renderer_destroy();
 
 	SDL_DestroyWindow(window);
 	SDL_Quit();

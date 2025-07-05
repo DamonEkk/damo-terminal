@@ -25,7 +25,7 @@ void renderer_destroy(){
 	SDL_Quit();
 }
 
-void generateText(){
+SDL_Texture* generate_text(const char* text){
 
 	SDL_Color fontColour = {255, 255, 255};
 	uint8_t sizeOfFont = 16;
@@ -36,11 +36,25 @@ void generateText(){
 
 	TTF_Font* font = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", sizeOfFont);
 
-	if (font == nullptr){
+	if (font == NULL){
 		printf("Failed to load font");
 		return 0;
 	}
 
-	SDL_Surface* surfaceText = TTF_RenderText_Solid(font, "testing", fontColour); 
+	SDL_Surface* surfaceText = TTF_RenderText_Solid(font, text, fontColour); 
+
+	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, surfaceText);
+	SDL_FreeSurface(surfaceText);
+	TTF_CloseFont(font);
+
+	return textTexture;
+
+}
+
+void render_background(SDL_Color colour){
+	SDL_SetRenderDrawColor(renderer, colour.r, colour.g, colour.b, colour.a);
+	SDL_RenderClear(renderer);
+
+	SDL_RenderPresent(renderer);
 }
 
