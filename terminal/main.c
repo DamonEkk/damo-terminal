@@ -8,6 +8,7 @@
 int main(int argc, char** args){
 	SDL_Surface* winSurface = NULL;
 	SDL_Window* window = NULL;
+	printf("does this work");
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		printf("Error Init failed");
@@ -22,7 +23,7 @@ int main(int argc, char** args){
 	}
 
 	renderer_init(window);
-	SDL_Color DEFAULT_BACKGROUND = {0, 0, 0, 255}; 
+		SDL_Color DEFAULT_BACKGROUND = {10, 10, 10, 200}; 
 	render_background(DEFAULT_BACKGROUND);
 	terminal_loop();
 

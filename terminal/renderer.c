@@ -25,7 +25,8 @@ void renderer_destroy(){
 	SDL_Quit();
 }
 
-SDL_Texture* generate_text(const char* text){
+SDL_Texture* generate_text(const char* text, int flag){
+	// Flag is used to determine if the text is user input:
 
 	SDL_Color fontColour = {255, 255, 255};
 	uint8_t sizeOfFont = 16;

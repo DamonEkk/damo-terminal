@@ -7,7 +7,7 @@ SDL_Renderer* getRenderer();
 
 void renderer_destroy();
 
-SDL_Texture* generate_text(const char* text);
+SDL_Texture* generate_text(const char* text, int flag);
 
 void render_background(SDL_Color colour);
 
