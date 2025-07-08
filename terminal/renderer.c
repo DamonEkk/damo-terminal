@@ -59,3 +59,7 @@ void render_background(SDL_Color colour){
 	SDL_RenderPresent(renderer);
 }
 
+void clear_all_renders(){
+	SDL_RenderClear(getRenderer());
+}
+
