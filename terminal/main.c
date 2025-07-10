@@ -8,14 +8,13 @@
 int main(int argc, char** args){
 	SDL_Surface* winSurface = NULL;
 	SDL_Window* window = NULL;
-	printf("does this work");
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		printf("Error Init failed");
 		return 1;
 	}
 
-	window = SDL_CreateWindow("DaMo-Terminal", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("DaMo-Terminal", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_RESIZABLE);
 
 	if (!window){
 		printf("Failed to create window, SDL_CreateWindow bug");

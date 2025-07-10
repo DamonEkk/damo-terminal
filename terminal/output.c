@@ -4,6 +4,8 @@
 #include "utils.h"
 #include "renderer.h"
 
+int textH, textW;
+
 // Produces the front string on the input text area.
 void starting_string(){
 	char* cd = get_cd();
@@ -20,8 +22,7 @@ void starting_string(){
 	SDL_Texture* generatedText = generate_text(name, 0);
 
 
-
-	int textW = 0, textH = 0;
+	textW = 0, textH = 0;
 	SDL_QueryTexture(generatedText, NULL, NULL, &textW, &textH);
 			
 	SDL_Rect pos = {5, 690, textW, textH};
@@ -35,4 +36,11 @@ void enter_input(){}
 
 void clear_input(){}
 
+int get_text_height(){
+	return textH;
+}
+
+int get_text_width(){
+	return textW;
+}
 
